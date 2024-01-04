@@ -17,8 +17,8 @@ app.use(express.static(path.join(__dirname, 'src')));
 
 // Initialize users with hardcoded usernames and hashed passwords
 const users = [
-    { id: 1, username: 'wea', password: '$2a$12$nClo3i0tEfqCjfxWJJLGEuebJNF97eVS8JxErCE4VLrBv9BY/Xh5S' },
-    { id: 2, username: 'admin', password: '$2a$12$pf5LfVonwFZpVIjz5tzEmutcIt.mzob7e1gsIt7yHWCYrU8WP5OUa' },
+    { id: 1, username: 'wea', password: '$2a$12$nClo3i0tEfqCjfxWJJLGEuebJNF97eVS8JxErCE4VLrBv9BY/Xh5S' }, // heslo: password1
+    { id: 2, username: 'admin', password: '$2a$12$pf5LfVonwFZpVIjz5tzEmutcIt.mzob7e1gsIt7yHWCYrU8WP5OUa' }, // heslo: password2
 ];
 
 // Function to authenticate user credentials
@@ -62,6 +62,8 @@ function saveTasks(tasks) {
 }
 
 let tasks = loadTasks(); // Load tasks initially
+let currentMaxId = tasks.reduce((maxId, task) => (task.id > maxId ? task.id : maxId), 0);
+
 
 // Middleware function to check if a user is authenticated
 function requireAuth(req, res, next) {
@@ -139,10 +141,12 @@ app.post('/tasks', [
 
     // Add a new task and save tasks to file
     const { title, completed } = req.body;
-    const newTask = { id: tasks.length + 1, title, completed };
+    const newTask = { id: currentMaxId + 1, title, completed };
     tasks.push(newTask);
     saveTasks(tasks);
     res.status(201).send('Task added successfully');
+
+    currentMaxId++; // Increment the currentMaxId for next task
 });
 
 // Route for deleting tasks

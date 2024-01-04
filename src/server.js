@@ -17,8 +17,8 @@ app.use(express.static(path.join(__dirname, 'src')));
 
 // Initialize users with hardcoded usernames and hashed passwords
 const users = [
-    { id: 1, username: 'wea', password: '$2a$12$nClo3i0tEfqCjfxWJJLGEuebJNF97eVS8JxErCE4VLrBv9BY/Xh5S' }, // heslo: password1
-    { id: 2, username: 'admin', password: '$2a$12$pf5LfVonwFZpVIjz5tzEmutcIt.mzob7e1gsIt7yHWCYrU8WP5OUa' }, // heslo: password2
+    { id: 1, username: 'wea', password: '$2a$12$nClo3i0tEfqCjfxWJJLGEuebJNF97eVS8JxErCE4VLrBv9BY/Xh5S' },
+    { id: 2, username: 'admin', password: '$2a$12$pf5LfVonwFZpVIjz5tzEmutcIt.mzob7e1gsIt7yHWCYrU8WP5OUa' },
 ];
 
 // Function to authenticate user credentials

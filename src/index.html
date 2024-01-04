@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>TODO List</h1>
+<div id="filters">
+    <label>Show:</label>
+    <button onclick="filterTasks('all')">All</button>
+    <button onclick="filterTasks('completed')">Completed</button>
+    <button onclick="filterTasks('uncompleted')">Uncompleted</button>
+</div>
+
+<div id="tasks-container"></div>
+
+<form id="task-form">
+    <input type="text" id="task-input" placeholder="Add a task">
+    <button type="submit">Add</button>
+</form>
+<button id="logout-button" onclick="logout()">Logout</button>
+<script src="script.js"></script>
+</body>
+</html>
